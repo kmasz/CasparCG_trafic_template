@@ -16,6 +16,7 @@
 		var imagesXML:XML;
 		var xmlLoader:URLLoader = new URLLoader();
 		private var timer:Timer;// = new Timer(2000);
+		var i:uint = 0;
 
 		public function korki()
 		{
@@ -33,6 +34,11 @@
 		{
 			//do the intro animation
 		}
+		override public function SetData(xmlData:XML):void
+		{
+			//imagesXML = XML(xmlLoader.data);
+			//super.SetData(xmlData);
+		}
 		function xmlLoaded(evt:Event):void
 		{
 			imagesXML = XML(xmlLoader.data);
@@ -40,7 +46,7 @@
 			mainLoader.addEventListener(Event.COMPLETE, fileLoaded);
 			titlesLoader.load( new URLRequest(imagesXML.legenda.@file));
 			titlesLoader.addEventListener(Event.COMPLETE, titlesLoaded);
-			legendLoader.load( new URLRequest(imagesXML.opis1.@file));
+			legendLoader.load( new URLRequest(imagesXML.positions[0].@file));
 			legendLoader.addEventListener(Event.COMPLETE, legendLoaded);
 		}
 		function fileLoaded(evt:Event):void
@@ -76,25 +82,39 @@
 			// to jest pierwsza pozycja
 			//TweenLite.to(mainLoader.content, 3, {scaleX:1, scaleY:1, x:-2360, y:-2800});
 			//TweenLite.to(legendLoader.content, 3, {alpha:1});
-			legendHide();
+			//for(var i:uint = 0;i < imagesXML.positions.length(); i++)
+			//{
+			positionLoop(imagesXML.positions[i].@pozx, imagesXML.positions[i].@pozy);
+			//trace(imagesXML.positions[i].@pozx);
+			//}
+
+			//trace(imagesXML.positions[1].@pozx);
 		}
-		function positionLoop():void
+		function positionLoop(pozX:int, pozY:int):void
 		{
 			// to jest pierwsza pozycja
-			TweenLite.to(mainLoader.content, 3, {scaleX:1, scaleY:1, x:-2360, y:-2800, onComplete:legendShow});
+			//TweenLite.to(mainLoader.content, 3, {scaleX:1, scaleY:1, x:-2360, y:-2800, onComplete:legendShow});
+			TweenLite.to(mainLoader.content, 3, {scaleX:1, scaleY:1, x:pozX, y:pozY, onComplete:legendShow});
 		}
 		function legendShow():void
 		{
 			TweenLite.to(legendLoader.content, 1, {alpha:1});
 			waitLoop();
 		}
-		function legendHide():void
+		function legendHide(event:TimerEvent):void
 		{
-			//to musi działać dodać jakiś warunek
-//111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-			//timer.removeEventListener(TimerEvent.TIMER, introZoom);
-			//timer = null;
-			TweenLite.to(legendLoader.content, 1, {alpha:0, onComplete:positionLoop});
+			timer.removeEventListener(TimerEvent.TIMER, legendHide);
+			timer = null;
+			if (i < imagesXML.positions.length()-1)
+			{
+				i++;
+			}
+			else
+			{
+				i = 0;
+			}
+			trace(imagesXML.positions.length());
+			TweenLite.to(legendLoader.content, 1, {alpha:0, onComplete:positionLoop, onCompleteParams:[imagesXML.positions[i].@pozx, imagesXML.positions[i].@pozy]});
 		}
 		function waitLoop():void
 		{
