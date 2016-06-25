@@ -14,10 +14,13 @@
 	{
 		var xmlLoader:URLLoader = null;
 		var timer:Timer = null;
-//		var pozx:Number = 0;
-//		var pozy:Number = 0;
+		//var pozx:Number = 0;
+		//var pozy:Number = 0;
 		var pozycjeX:Vector.<Number> = new Vector.<Number>();
 		var pozycjeY:Vector.<Number> = new Vector.<Number>();
+		var route_labels:Vector.<String> = new Vector.<String>();
+		var positionCount:uint = 0;
+		var positionlength:uint = 0;
 		public function korki()
 		{
 			// constructor code
@@ -42,18 +45,23 @@
 			titlesLoader.addEventListener(Event.COMPLETE,titlesLoaded);
 			legendLoader.load(new URLRequest(xmlData.route_labels[0]));
 			legendLoader.addEventListener(Event.COMPLETE,legendLoaded);
-			for(var i:uint = 0; i < xmlData.pozx.length(); i++)
+			positionlength = xmlData.pozx.length();
+			for (var i:uint = 0; i < xmlData.pozx.length(); i++)
 			{
 				pozycjeX.push(xmlData.pozx[i]);
 			}
-			for(var i:uint = 0; i < xmlData.pozy.length(); i++)
+			for (var j:uint = 0; j < xmlData.pozy.length(); j++)
 			{
-				pozycjeY.push(xmlData.pozy[i]);
+				pozycjeY.push(xmlData.pozy[j]);
 			}
-//			pozx = xmlData.pozx[0];
-//			pozy = xmlData.pozy[0];
+			for (var k:uint = 0; k < xmlData.route_labels.length(); k++)
+			{
+				route_labels.push(xmlData.route_labels[k]);
+			}
+			//pozx = xmlData.pozx[0];
+			//pozy = xmlData.pozy[0];
 			//super.SetData(xmlData);
-			trace(pozycjeX.length);
+			//trace(positionlength);
 		}
 		//TraceToLog(xmlData.positions[0].@file);
 		function fileLoaded(evt:Event):void
@@ -63,7 +71,7 @@
 			//mainLoader.content.height = 576;
 			mainLoader.content.scaleX = 0.30;
 			mainLoader.content.scaleY = 0.30;//0.14;
-			mainLoader.content.x = -200;
+			mainLoader.content.x = -180;
 			mainLoader.content.y = -300;
 			timer = new Timer(2000);
 			timer.addEventListener(TimerEvent.TIMER, introZoom);
@@ -84,7 +92,7 @@
 			//TweenLite.to(legendLoader.content, 3, {alpha:1});
 			//for(var i:uint = 0;i < imagesXML.positions.length(); i++)
 			//{
-			positionLoop(pozycjeX[0], pozycjeY[0]);
+			positionLoop(pozycjeX[positionCount], pozycjeY[positionCount]);
 			//trace(imagesXML.positions[i].@pozx);
 			//}
 
@@ -100,7 +108,10 @@
 		}
 		function positionLoop(pozX:int, pozY:int):void
 		{
-			// to jest pierwsza pozycja
+			legendLoader.load(new URLRequest(route_labels[positionCount]));
+			legendLoader.addEventListener(Event.COMPLETE,legendLoaded);
+			//positionCount++;
+			// to jest pierwsza pozycja;
 			//TweenLite.to(mainLoader.content, 3, {scaleX:1, scaleY:1, x:-2360, y:-2800, onComplete:legendShow});
 			TweenLite.to(mainLoader.content, 3, {scaleX:1, scaleY:1, x:pozX, y:pozY, onComplete:legendShow});
 		}
@@ -119,15 +130,17 @@
 		{
 			timer.removeEventListener(TimerEvent.TIMER, legendHide);
 			timer = null;
-			TweenLite.to(legendLoader.content, 1, {alpha:0, onComplete:positionLoop, onCompleteParams:[pozycjeX[1], pozycjeY[1]]});
-			//if (i < imagesXML.positions.length()-1)
-			//{
-			//i++;
-			//}
-			//else
-			//{
-			//i = 0;
-			//}
+			if (positionCount <positionlength-1)
+			{
+				positionCount++;
+			}
+			else
+			{
+				positionCount = 0;
+			}
+			TweenLite.to(legendLoader.content, 1, {alpha:0, onComplete:positionLoop, onCompleteParams:[pozycjeX[positionCount], pozycjeY[positionCount]]});
+			//legendLoader.load(new URLRequest(route_labels[positionCount]));
+			//legendLoader.addEventListener(Event.COMPLETE,legendLoaded);
 			//trace(imagesXML.positions.length());
 			//TweenLite.to(legendLoader.content, 1, {alpha:0, onComplete:positionLoop, onCompleteParams:[imagesXML.positions[i].@pozx, imagesXML.positions[i].@pozy]});
 		}
