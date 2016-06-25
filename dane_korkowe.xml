@@ -2,7 +2,13 @@
 <dane_korkowe>
 	<mapa>poznan_korki.png</mapa>
 	<legenda file="legenda.png"/>
-	<positions file="01_r_staroleka.png" pozx="-2360" pozy="-2800"/>
-	<positions file="01_r_staroleka.png" pozx="-2100" pozy="-2500"/>
-	<positions file="01_r_staroleka.png" pozx="-2000" pozy="-2200"/>
+	<route_labels>01_r_staroleka.png </route_labels>
+	<pozx>-2360</pozx>
+	<pozy>-2800</pozy>
+	<route_labels file="01_r_staroleka.png" pozx="-2100" pozy="-2500"/>
+	<pozx>-2100</pozx>
+	<pozy>-2500</pozy>
+	<route_labels file="01_r_staroleka.png" pozx="-2000" pozy="-2200"/>
+	<pozx>-2000</pozx>
+	<pozy>-2300</pozy>
 </dane_korkowe>
