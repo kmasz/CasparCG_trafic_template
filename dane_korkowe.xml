@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <dane_korkowe>
-	<mapa file="poznan_korki.png"/>
+	<mapa>poznan_korki.png</mapa>
 	<legenda file="legenda.png"/>
 	<positions file="01_r_staroleka.png" pozx="-2360" pozy="-2800"/>
 	<positions file="01_r_staroleka.png" pozx="-2100" pozy="-2500"/>
