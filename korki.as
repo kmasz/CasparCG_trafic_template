@@ -144,6 +144,29 @@
 			//trace(imagesXML.positions.length());
 			//TweenLite.to(legendLoader.content, 1, {alpha:0, onComplete:positionLoop, onCompleteParams:[imagesXML.positions[i].@pozx, imagesXML.positions[i].@pozy]});
 		}
+		//overridden preDispose that will be called just before the template is removed by the template host. Allows us to clean up.
+		override public function preDispose():void
+		{
+			//dispose the timer
+			timer.stop();
+			timer.removeEventListener(TimerEvent.TIMER, legendHide);
+			timer = null;
+			//dispose the tweener engine
+		}
+		//overridden Stop that initiates the outro animation. IMPORTANT, it is very important when you override Stop to later call super.Stop() or removeTemplate()
+		override public function Stop():void
+		{
+			//do the outro animation
+
+			//TweenLite.killTweensOf(mainLoader);
+			TweenLite.to(titlesLoader.content, 0.5, {alpha:0});
+			TweenLite.to(legendLoader.content, 0.5, {alpha:0});
+			outroAnimation();
+		}
+		function outroAnimation():void
+		{
+			TweenLite.to(mainLoader.content, 2, {scaleX:0.30, scaleY:0.30, x:-180, y:-300, onComplete: removeTemplate});
+		}
 		/*
 		//override public function postInitialize():void
 		//{
