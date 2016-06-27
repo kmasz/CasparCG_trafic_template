@@ -2,7 +2,25 @@
 <dane_korkowe>
 	<mapa>poznan_korki.png</mapa>
 	<legenda file="legenda.png"/>
-	<positions file="01_r_staroleka.png" pozx="-2360" pozy="-2800"/>
-	<positions file="01_r_staroleka.png" pozx="-2100" pozy="-2500"/>
-	<positions file="01_r_staroleka.png" pozx="-2000" pozy="-2200"/>
+	<route_labels>07_miaszka.png </route_labels>
+	<pozx>-1600</pozx>
+	<pozy>-1300</pozy>
+	<route_labels>01_r_staroleka.png </route_labels>
+	<pozx>-2335</pozx>
+	<pozy>-2770</pozy>
+	<route_labels>02_r_rataje.png </route_labels>
+	<pozx>-2530</pozx>
+	<pozy>-2190</pozy>
+	<route_labels>03_r_srodka.png </route_labels>
+	<pozx>-2750</pozx>
+	<pozy>-1660</pozy>
+	<route_labels>04_solna.png </route_labels>
+	<pozx>-2075</pozx>
+	<pozy>-1570</pozy>
+	<route_labels>05_szelagowska.png </route_labels>
+	<pozx>-2310</pozx>
+	<pozy>-1280</pozy>
+	<route_labels>06_pulaskiego_n.png </route_labels>
+	<pozx>-1875</pozx>
+	<pozy>-1425</pozy>
 </dane_korkowe>
