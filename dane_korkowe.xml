@@ -2,6 +2,8 @@
 <dane_korkowe>
 	<mapa>poznan_korki.png</mapa>
 	<legenda file="korki_images/legenda.png"/>
+	<aoudiofile>KOMUNA_1_LOOP.mp3</aoudiofile>
+	<aoudiovolume>0.8</aoudiovolume>
 	<route_labels>korki_images/01_r_staroleka.png </route_labels>
 	<pozx>-2335</pozx>
 	<pozy>-2770</pozy>

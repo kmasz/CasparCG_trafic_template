@@ -10,7 +10,9 @@
 	import se.svt.caspar.template.CasparTemplate;
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
-	import flash.media.Sound;
+	import com.greensock.loading.*;
+	import com.greensock.events.LoaderEvent;
+	import com.greensock.plugins.*;
 
 	public class korki extends CasparTemplate
 	{
@@ -22,19 +24,20 @@
 		var positionCount:uint = 0;
 		var positionlength:uint = 0;
 		var ifOutro:Boolean = false;
-		var audioFile:URLRequest = new URLRequest("KOMUNA_1_LOOP.mp3");
-		var song:Sound = new Sound();
+
+		var sound:MP3Loader = null;
+		var SoundLoopFile:String = null;
+		var audioVol:Number = 0;
+		TweenPlugin.activate([VolumePlugin]);
+		
 		public function korki()
 		{
 			// constructor code
 			var myXML:XML = new XML();
 			var XML_URL:String = "dane_korkowe.xml";
 			var myXMLURL:URLRequest = new URLRequest(XML_URL);
-
 			xmlLoader = new URLLoader(myXMLURL);
 			xmlLoader.addEventListener(Event.COMPLETE, xmlLoaded);
-			song.addEventListener(Event.COMPLETE, songLoaded);
-			song.load(audioFile);
 
 		}
 		public function xmlLoaded(event:Event):void
@@ -50,6 +53,10 @@
 			titlesLoader.addEventListener(Event.COMPLETE,titlesLoaded);
 			legendLoader.load(new URLRequest(xmlData.route_labels[0]));
 			legendLoader.addEventListener(Event.COMPLETE,legendLoaded);
+			SoundLoopFile = xmlData.aoudiofile;
+			audioVol = xmlData.aoudiovolume;
+			sound = new MP3Loader(SoundLoopFile,  {onComplete:songLoaded, volume:0, repeat:-1}); //repeat:-1 == infinitive loop
+			sound.load();
 			positionlength = xmlData.pozx.length();
 			for (var i:uint = 0; i < xmlData.pozx.length(); i++)
 			{
@@ -155,11 +162,13 @@
 		}
 		function outroAnimation():void
 		{
-			TweenLite.to(mainLoader.content, 5, {scaleX:0.30, scaleY:0.30, x:-180, y:-300, ease:Cubic.easeOut, onComplete: removeTemplate});
+			TweenLite.to(mainLoader.content, 3, {scaleX:0.30, scaleY:0.30, x:-180, y:-300, ease:Cubic.easeOut, onComplete: removeTemplate});
+			TweenLite.to(sound, 3, {volume:0});
 		}
 		function songLoaded(evt:Event):void
 		{
-			//song.play(0,100);
+			//starting audio fade in
+			TweenLite.to(sound, 5, {volume:audioVol});
 		}
 	}
 }
