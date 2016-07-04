@@ -1,52 +1,52 @@
 <?xml version="1.0"?>
 <dane_korkowe>
-	<mapa>poznan_korki.png</mapa>
-	<legenda file="korki_images/legenda.png"/>
-	<aoudiofile>KOMUNA_1_LOOP.mp3</aoudiofile>
+	<mapa>C:\CasparCG\media\traffic_data\poznan_korki.png</mapa>
+	<legenda>C:\CasparCG\media\traffic_data\legenda.png</legenda>
+	<aoudiofile>C:\CasparCG\media\traffic_data\KOMUNA_1_LOOP.mp3</aoudiofile>
 	<aoudiovolume>0.8</aoudiovolume>
-	<route_labels>korki_images/01_r_staroleka.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\01_r_staroleka.png </route_labels>
 	<pozx>-2335</pozx>
 	<pozy>-2770</pozy>
-	<route_labels>korki_images/02_r_rataje.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\02_r_rataje.png </route_labels>
 	<pozx>-2530</pozx>
 	<pozy>-2190</pozy>
-	<route_labels>korki_images/03_r_srodka.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\03_r_srodka.png </route_labels>
 	<pozx>-2750</pozx>
 	<pozy>-1660</pozy>
-	<route_labels>korki_images/04_solna.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\04_solna.png </route_labels>
 	<pozx>-2075</pozx>
 	<pozy>-1570</pozy>
-	<route_labels>korki_images/05_szelagowska.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\05_szelagowska.png </route_labels>
 	<pozx>-2310</pozx>
 	<pozy>-1280</pozy>
-	<route_labels>korki_images/06_pulaskiego_n.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\06_pulaskiego_n.png </route_labels>
 	<pozx>-1875</pozx>
 	<pozy>-1425</pozy>
-	<route_labels>korki_images/07_miaszka.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\07_miaszka.png </route_labels>
 	<pozx>-1860</pozx>
 	<pozy>-1160</pozy>
-	<route_labels>korki_images/08_niestachowsk.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\08_niestachowsk.png </route_labels>
 	<pozx>-1290</pozx>
 	<pozy>-1110</pozy>
-	<route_labels>korki_images/09_dabrowskiego.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\09_dabrowskiego.png </route_labels>
 	<pozx>-1230</pozx>
 	<pozy>-1475</pozy>
-	<route_labels>korki_images/10_junikowo.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\10_junikowo.png </route_labels>
 	<pozx>0</pozx>
 	<pozy>-2480</pozy>
-	<route_labels>korki_images/12_opolska_d_wi.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\12_opolska_d_wi.png </route_labels>
 	<pozx>-1465</pozx>
 	<pozy>-3385</pozy>
-	<route_labels>korki_images/13_w_gorczynski.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\13_w_gorczynski.png </route_labels>
 	<pozx>-970</pozx>
 	<pozy>-2710</pozy>
-	<route_labels>korki_images/14_lazarz.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\14_lazarz.png </route_labels>
 	<pozx>-1230</pozx>
 	<pozy>-2350</pozy>
-	<route_labels>korki_images/15_r_kaponiera.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\15_r_kaponiera.png </route_labels>
 	<pozx>-1725</pozx>
 	<pozy>-1730</pozy>
-	<route_labels>korki_images/16_Gdynska.png </route_labels>
+	<route_labels>C:\CasparCG\media\traffic_data\16_Gdynska.png </route_labels>
 	<pozx>-3100</pozx>
 	<pozy>-1025</pozy>	
 </dane_korkowe>

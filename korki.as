@@ -49,7 +49,7 @@
 
 			mainLoader.load(new URLRequest(xmlData.mapa));
 			mainLoader.addEventListener(Event.COMPLETE, fileLoaded);
-			titlesLoader.load(new URLRequest(xmlData.legenda.@file));
+			titlesLoader.load(new URLRequest(xmlData.legenda));
 			titlesLoader.addEventListener(Event.COMPLETE,titlesLoaded);
 			legendLoader.load(new URLRequest(xmlData.route_labels[0]));
 			legendLoader.addEventListener(Event.COMPLETE,legendLoaded);
